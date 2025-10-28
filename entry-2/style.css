@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: "Helvetica", sans-serif;
+  background-color: #2b1b13;
+  color: #f5efe6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.entry-container {
+  text-align: center;
+  max-width: 650px;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #1a4da1;
+  margin-bottom: 20px;
+}
+
+.entry-text {
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #f2e8dc;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background-color: #4a3327;
+  color: #f2e8dc;
+  padding: 20px 25px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.icon-card span {
+  margin-top: 10px;
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+}
+
+.icon-card:hover {
+  background-color: #f2e8dc;
+  color: #2b1b13;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+a.button {
+  display: inline-block;
+  background-color: #f2e8dc;
+  color: #2b1b13;
+  padding: 12px 25px;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid #2b1b13;
+  transition: 0.3s ease;
+}
+
+a.button:hover {
+  background-color: #2b1b13;
+  color: #f2e8dc;
+  transform: scale(1.05);
+}
+
+
+.home-page {
+  background-color: #2b1b13;
+}
+
+
+.subway-page {
+  background-color: #2b1b13; 
+}

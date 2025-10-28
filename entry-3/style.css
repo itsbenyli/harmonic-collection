@@ -78,14 +78,12 @@ a.button:hover {
   transform: scale(1.05);
 }
 
+
 .home-page {
   background-color: #2b1b13;
 }
 
-.coffee-page {
-  background-color: #3a261c;
-}
 
-.coffee-subpage {
-  background-color: #432b1d;
+.window-page {
+  background-color: #3c2a1b;
 }
