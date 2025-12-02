@@ -68,6 +68,7 @@ body {
   text-decoration: underline;
 }
 
+
 .main-content {
   grid-area: main-content;
   padding: 40px 60px;
