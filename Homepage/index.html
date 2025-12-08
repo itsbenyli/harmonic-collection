@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> Home-Everyday Fragments</title>
+  <title>Home - Everyday Fragments</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="home-page">
-  <div class="top-nav">
-    <a href="entry1.html">Entry1</a>
-    <a href="entry2.html">Entry2</a>
-    <a href="entry3.html">Entry3</a>
-    <a href="entry4.html">Entry4</a>
-    <a href="entry5.html">Entry5</a>
-    <a href="entry6.html">Entry6</a>
-    <a href="entry7.html">Entry7</a>
-    <a href="entry8.html">Entry8</a>
-    <a href="entry9.html">Entry9</a>
-    <a href="entry10.html">Entry10</a>
-  </div>
 
-<div class="home-container">
+  <div class="top-nav">
+      <a href="../entry-1/index.html">Entry1</a>
+      <a href="../entry-2/index.html">Entry2</a>
+      <a href="../entry-3/index.html">Entry3</a>
+      <a href="../entry-4/index.html">Entry4</a>
+      <a href="../entry-5/index.html">Entry5</a>
+      <a href="../entry-6/index.html">Entry6</a>
+      <a href="../entry-7/index.html">Entry7</a>
+      <a href="../entry-8/index.html">Entry8</a>
+      <a href="../entry-9/index.html">Entry9</a>
+      <a href="../entry-10/index.html">Entry10</a>
+    </div>
+
+  <div class="home-container">
     <div class="center-text">
       <p>Everyday fragments become mirrors.<br>
       In the smallest glimpses of life,<br>
@@ -31,5 +32,116 @@
       <div class="hand hour-hand"></div>
       <div class="hand minute-hand"></div>
       <div class="center-dot"></div>
+
+      <!-- 10刻度 -->
+      <div class="markers">
+        <div class="marker" data-entry="1"></div>
+        <div class="marker" data-entry="2"></div>
+        <div class="marker" data-entry="3"></div>
+        <div class="marker" data-entry="4"></div>
+        <div class="marker" data-entry="5"></div>
+        <div class="marker" data-entry="6"></div>
+        <div class="marker" data-entry="7"></div>
+        <div class="marker" data-entry="8"></div>
+        <div class="marker" data-entry="9"></div>
+        <div class="marker" data-entry="10"></div>
+      </div>
     </div>
   </div>
+
+<script>
+  const clock = document.getElementById('clock');
+  const hourHand = document.querySelector('.hour-hand');
+  const minuteHand = document.querySelector('.minute-hand');
+  const markers = document.querySelectorAll('.marker');
+
+  document.addEventListener('mousemove', e => {
+    const rect = clock.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+
+    const angle = Math.atan2(dy, dx); 
+    let deg = angle * (180 / Math.PI);
+
+    // ----------------------------
+    // 1. 时针完全跟随鼠标
+    // ----------------------------
+    const hourDeg = deg;
+    hourHand.style.transform = `rotate(${hourDeg}deg)`;
+
+
+    // ----------------------------
+    // 2. 分针：快转一些（你的旧逻辑）
+    // ----------------------------
+    let minuteDeg = deg * 2;
+
+
+    // ----------------------------
+    // 3. 防止时针和分针重叠
+    // ----------------------------
+    const minGap = 20;  // 最小角度，不可重叠，想改可以改这里
+
+    // 算两个角度之间的差
+    let diff = ((minuteDeg - hourDeg + 540) % 360) - 180;
+
+    // 如果太接近 → 推开分针
+    if (Math.abs(diff) < minGap) {
+      if (diff > 0) {
+        minuteDeg = hourDeg + minGap;
+      } else {
+        minuteDeg = hourDeg - minGap;
+      }
+    }
+
+    minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+
+
+    // ----------------------------
+    // 4. 刻度亮度感应（保持你的逻辑）
+    // ----------------------------
+    markers.forEach(marker => {
+      const mr = marker.getBoundingClientRect();
+      const mx = mr.left + mr.width / 2;
+      const my = mr.top + mr.height / 2;
+
+      const dist = Math.hypot(e.clientX - mx, e.clientY - my);
+      const maxDist = 180;
+
+      if (dist < maxDist) {
+        const intensity = 1 - dist / maxDist;
+        marker.style.background = `rgba(255,255,255,${0.2 + intensity * 0.8})`;
+        marker.style.boxShadow = `0 0 ${20 * intensity}px rgba(255,255,255,${intensity})`;
+      } else {
+        marker.style.background = "black";
+        marker.style.boxShadow = "none";
+      }
+    });
+
+  });
+
+
+  // 刻度点击跳转
+  markers.forEach(mark => {
+    mark.addEventListener('click', () => {
+      const entry = mark.dataset.entry;
+      window.location.href = `../entry-${entry}/index.html`;
+    });
+  });
+
+  // 刻度位置
+  markers.forEach((m, i) => {
+    const angle = (360 / 10) * i - 90; 
+    const radius = 380;
+    const rad = angle * (Math.PI / 180);
+    m.style.left = 425 + radius * Math.cos(rad) + "px";
+    m.style.top = 425 + radius * Math.sin(rad) + "px";
+  });
+</script>
+
+
+
+</body>
+</html>

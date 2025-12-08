@@ -38,7 +38,6 @@
   gap: 24px;
   padding: 10px 0;
   z-index: 10;
-  border-bottom: 1px solid #3b2a1e;
 }
 
 .top-nav a {
@@ -47,36 +46,26 @@
   font-size: 0.95em;
   transition: 0.3s ease;
 }
-
 .top-nav a:hover {
   color: #1a4da1;
   transform: scale(1.05);
 }
 
-
-
-
-
-
-
+/* CLOCK */
 .clock {
   position: absolute;
-  bottom: -25%;
-  width: 500px;
-  height: 500px;
+  bottom: -10%;
+  width: 850px;
+  height: 850px;
   background: radial-gradient(circle at center, #d9e1ff 0%, #7a8cff 60%, #2b1b13 100%);
   border-radius: 50%;
-  box-shadow: 0 0 50px rgba(120, 150, 255, 0.3);
+  box-shadow: 0 0 60px rgba(120, 150, 255, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 1s ease;
   cursor: pointer;
   z-index: 0;
-}
-
-.clock:hover {
-  transform: scale(1.02);
 }
 
 .hand {
@@ -88,22 +77,32 @@
 }
 
 .hour-hand {
-  width: 6px;
-  height: 100px;
+  width: 8px;
+  height: 150px;
   bottom: 50%;
 }
 
 .minute-hand {
-  width: 4px;
-  height: 160px;
+  width: 6px;
+  height: 240px;
   bottom: 50%;
 }
 
 .center-dot {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: #2b1b13;
   border: 2px solid #f5efe6;
   border-radius: 50%;
   z-index: 4;
+}
+
+/* MARKERS */
+.marker {
+  position: absolute;
+  width: 4px;
+  height: 22px;
+  background: black;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
