@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Entry 2 | Door</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="door-page">
+<body class="door-new">
 
-  <div class="page-layout">
-
-    <div class="top-nav">
+  <div class="top-nav" id="topNav">
       <a href="../entry-1/index.html">Entry1</a>
       <a href="../entry-2/index.html">Entry2</a>
       <a href="../entry-3/index.html">Entry3</a>
@@ -19,59 +18,131 @@
       <a href="../entry-8/index.html">Entry8</a>
       <a href="../entry-9/index.html">Entry9</a>
       <a href="../entry-10/index.html">Entry10</a>
+  </div>
+
+
+  <!-- FIRST SCREEN -->
+  <section class="slide-panel" id="slidePanel">
+
+    <img 
+      src="https://i.pinimg.com/1200x/2a/ca/a8/2acaa80a2f3e1fdf50b8887108d46b10.jpg"
+      class="slide-image"
+      id="slideImage"
+    >
+
+    <div class="intro-text" id="introText">
+      <p>
+        The door moves aside slowly—  
+        not pushed, not forced,  
+        but shifted just enough for me to enter  
+        a softer version of myself.  
+
+        I’ve crossed so many thresholds  
+        without giving them names.  
+        But this one feels intentional—  
+        an opening I am finally ready to walk through.  
+
+        As the image slides away,  
+        it leaves space for my quiet reflection,  
+        and suddenly the world  
+        feels a little wider than before.
+      </p>
     </div>
 
-    <div class="sidebar">
-      <p>Quick Links:</p>
-      <a href="#Door">Door</a>
-      <a href="#Map">Map</a>
-      <a href="#Earphone">Earphone</a>
-    </div>
+    <div class="drag-hint">swipe left</div>
 
-    <div class="main-content">
+  </section>
 
-      <div class="entry-container">
-        <h1>Door</h1>
-        <p class="entry-text">
-          The door stands slightly ajar, a threshold between solitude and adventure.  
-          Its worn wood and cold metal handle carry the weight of countless entries and exits.  
-          Passing through it feels like stepping into possibility, a quiet reminder that every day holds an invitation to something new.
-        </p>
 
-        <div class="image-section" id="Door">
-          <img src="https://i.pinimg.com/1200x/2a/ca/a8/2acaa80a2f3e1fdf50b8887108d46b10.jpg" alt="Door" />
-          <p class="entry-text">
-            The light spills from the gap, painting the floor with a faint glow.  
-            Every creak of the hinge resonates like a memory stirring. I pause, sensing the delicate boundary between inside and outside, 
-            between what I know and what I have yet to discover. The door becomes a metaphor for choices and transitions.
+
+  <!-- SECOND SCREEN (NO REPEATED DOOR SECTION) -->
+  <section class="content-panel">
+
+    <div class="entry-container">
+
+      <div class="block">
+        <img src="https://i.pinimg.com/736x/29/c4/b1/29c4b14938ad2e1c6d55982a90dbc617.jpg" class="block-img">
+        <div class="block-text">
+          <h2>Map</h2>
+          <p>
+            A map unfolds, full of lines and marks tracing journeys yet to come.  
+            Each route is a quiet invitation—a promise of footsteps not yet taken.
           </p>
         </div>
+      </div>
 
-        <div class="image-section reverse" id="Map">
-          <img src="https://i.pinimg.com/736x/29/c4/b1/29c4b14938ad2e1c6d55982a90dbc617.jpg" alt="Map" />
-          <p class="entry-text">
-            A map unfolds across the desk, full of lines and marks tracing journeys yet to come.  
-            Each route is a narrative, a silent story waiting for footsteps. I trace the paths with my finger, imagining the landscapes, cities, 
-            and quiet corners I might explore. Maps are not just directions—they are invitations to wander and reflect.
+      <div class="block reverse">
+        <img src="https://i.pinimg.com/1200x/75/99/d3/7599d3d91246228a28fe21297918ab40.jpg" class="block-img">
+        <div class="block-text">
+          <h2>Earphone</h2>
+          <p>
+            Sound reshapes the air around me.  
+            A melody becomes a path inward—  
+            a space where memory softens  
+            and the world feels briefly familiar.
           </p>
         </div>
-
-        <div class="image-section" id="Earphone">
-          <img src="https://i.pinimg.com/1200x/75/99/d3/7599d3d91246228a28fe21297918ab40.jpg" alt="Earphone" />
-          <p class="entry-text">
-            Earphones rest on the table, coiled like dormant rivers.  
-            When worn, they carry sound into the personal space around the mind. Music transforms the air into a landscape, 
-            connecting memory and emotion, guiding attention, and softening the edges of the world. Even silence feels curated when framed through sound.
-          </p>
-        </div>
-
-        <a href="index.html" class="button">Back to Archive</a>
-
       </div>
 
     </div>
 
-  </div>
+  </section>
+
+<script>
+/* ---- FIXED INTERACTION SCRIPT ---- */
+
+const img = document.getElementById("slideImage");
+const introText = document.getElementById("introText");
+const topNav = document.getElementById("topNav");
+
+let startX = 0;
+let dragging = false;
+
+/* START DRAG */
+img.addEventListener("mousedown", e => {
+  dragging = true;
+  startX = e.clientX;
+});
+
+document.addEventListener("mouseup", () => dragging = false);
+
+document.addEventListener("mousemove", e => {
+  if (!dragging) return;
+  const diff = e.clientX - startX;
+
+  if (diff < 0) img.style.transform = `translateX(${diff}px)`;
+
+  if (diff < -180) finishSlide();
+});
+
+/* TOUCH */
+img.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+img.addEventListener("touchmove", e => {
+  const diff = e.touches[0].clientX - startX;
+
+  if (diff < 0) img.style.transform = `translateX(${diff}px)`;
+
+  if (diff < -180) finishSlide();
+});
+
+/* OPENING COMPLETE */
+function finishSlide() {
+  img.style.transition = "transform 0.6s ease-out";
+  img.style.transform = "translateX(-120%)";
+
+  introText.style.opacity = 1;
+
+  setTimeout(() => {
+    topNav.style.opacity = 1;
+    topNav.style.pointerEvents = "auto";
+  }, 600);
+
+  dragging = false;
+}
+</script>
 
 </body>
 </html>
