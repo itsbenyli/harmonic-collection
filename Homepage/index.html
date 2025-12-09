@@ -7,7 +7,7 @@
 
 <body class="home-page">
 
-   <div class="top-nav">
+  <div class="top-nav">
     <a href="../Homepage/index.html">Home</a>
     <a href="../entry-1/index.html">Coffee</a>
     <a href="../entry-2/index.html">Subway</a>
@@ -16,25 +16,24 @@
     <a href="../entry-5/index.html">SmallProofs</a>
     <a href="../entry-6/index.html">Reflection</a>
     <a href="../entry-7/index.html">Sky</a>
-    <a href="../entry-8/index.html">Entry8</a>
+    <a href="../entry-8/index.html">Rain</a>
     <a href="../entry-9/index.html">Me</a>
     <a href="../entry-10/index.html">Dream</a>
-    </div>
+  </div>
 
   <div class="home-container">
+
     <div class="center-text">
-      <p>Everyday fragments become mirrors.<br>
-      In the smallest glimpses of life,<br>
-      I find reflections<br>
-      of myself.</p>
+      <p>
+        Everyday fragments become mirrors.<br>
+        In the smallest glimpses of life,<br>
+        I find reflections<br>
+        of myself.
+      </p>
     </div>
 
     <div class="clock" id="clock">
-      <div class="hand hour-hand"></div>
-      <div class="hand minute-hand"></div>
-      <div class="center-dot"></div>
 
-      <!-- 10刻度 -->
       <div class="markers">
         <div class="marker" data-entry="1"></div>
         <div class="marker" data-entry="2"></div>
@@ -47,102 +46,31 @@
         <div class="marker" data-entry="9"></div>
         <div class="marker" data-entry="10"></div>
       </div>
+
     </div>
+
   </div>
 
+  <div class="ref-btn" onclick="location.href='references.html'"></div>
+
 <script>
-  const clock = document.getElementById('clock');
-  const hourHand = document.querySelector('.hour-hand');
-  const minuteHand = document.querySelector('.minute-hand');
-  const markers = document.querySelectorAll('.marker');
+  // place markers around clock (static)
+  let mk = document.querySelectorAll(".marker");
 
-  document.addEventListener('mousemove', e => {
-    const rect = clock.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
+  mk.forEach(function(one, i) {
+    let ang = (360/10) * i - 90;
+    let rad = ang * Math.PI / 180;
+    let r = 380;
 
-    const dx = e.clientX - cx;
-    const dy = e.clientY - cy;
+    one.style.left = (425 + r * Math.cos(rad)) + "px";
+    one.style.top = (425 + r * Math.sin(rad)) + "px";
 
-    const angle = Math.atan2(dy, dx); 
-    let deg = angle * (180 / Math.PI);
-
-    // ----------------------------
-    // 1. 时针完全跟随鼠标
-    // ----------------------------
-    const hourDeg = deg;
-    hourHand.style.transform = `rotate(${hourDeg}deg)`;
-
-
-    // ----------------------------
-    // 2. 分针：快转一些（你的旧逻辑）
-    // ----------------------------
-    let minuteDeg = deg * 2;
-
-
-    // ----------------------------
-    // 3. 防止时针和分针重叠
-    // ----------------------------
-    const minGap = 20;  // 最小角度，不可重叠，想改可以改这里
-
-    // 算两个角度之间的差
-    let diff = ((minuteDeg - hourDeg + 540) % 360) - 180;
-
-    // 如果太接近 → 推开分针
-    if (Math.abs(diff) < minGap) {
-      if (diff > 0) {
-        minuteDeg = hourDeg + minGap;
-      } else {
-        minuteDeg = hourDeg - minGap;
-      }
-    }
-
-    minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
-
-
-    // ----------------------------
-    // 4. 刻度亮度感应（保持你的逻辑）
-    // ----------------------------
-    markers.forEach(marker => {
-      const mr = marker.getBoundingClientRect();
-      const mx = mr.left + mr.width / 2;
-      const my = mr.top + mr.height / 2;
-
-      const dist = Math.hypot(e.clientX - mx, e.clientY - my);
-      const maxDist = 180;
-
-      if (dist < maxDist) {
-        const intensity = 1 - dist / maxDist;
-        marker.style.background = `rgba(255,255,255,${0.2 + intensity * 0.8})`;
-        marker.style.boxShadow = `0 0 ${20 * intensity}px rgba(255,255,255,${intensity})`;
-      } else {
-        marker.style.background = "black";
-        marker.style.boxShadow = "none";
-      }
-    });
-
-  });
-
-
-  // 刻度点击跳转
-  markers.forEach(mark => {
-    mark.addEventListener('click', () => {
-      const entry = mark.dataset.entry;
-      window.location.href = `../entry-${entry}/index.html`;
-    });
-  });
-
-  // 刻度位置
-  markers.forEach((m, i) => {
-    const angle = (360 / 10) * i - 90; 
-    const radius = 380;
-    const rad = angle * (Math.PI / 180);
-    m.style.left = 425 + radius * Math.cos(rad) + "px";
-    m.style.top = 425 + radius * Math.sin(rad) + "px";
+    one.onclick = function() {
+      let num = one.getAttribute("data-entry");
+      location.href = "../entry-" + num + "/index.html";
+    };
   });
 </script>
-
-
 
 </body>
 </html>

@@ -97,7 +97,6 @@
   z-index: 4;
 }
 
-/* MARKERS */
 .marker {
   position: absolute;
   width: 4px;
@@ -105,4 +104,77 @@
   background: black;
   cursor: pointer;
   transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ref-btn {
+  width: 28px;
+  height: 28px;
+  background: #f5efe6;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  cursor: pointer;
+  z-index: 20;
+  transition: 0.3s ease;
+}
+
+.ref-btn:hover {
+  transform: scale(1.12);
+  background: #fff4d0;
+}
+
+
+.refs-new {
+  background: #2b1b13;
+  color: #f5efe6;
+  font-family: Helvetica, sans-serif;
+  padding: 60px 60px;
+}
+
+.refs-title {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.refs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ref-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.ref-row img {
+  width: 260px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.ref-row p {
+  font-size: 1em;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+/* back button */
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 26px;
+  height: 26px;
+  background: #9db7ff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  z-index: 30;
+}
+.back-btn:hover {
+  transform: scale(1.2);
 }

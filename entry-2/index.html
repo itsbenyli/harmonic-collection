@@ -2,12 +2,14 @@
 <html>
 <head>
   <title>Entry 2 | Door</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="door-new">
 
-  <div class="top-nav hidden" id="topNav">
+  <div class="top-nav" id="topNav">
     <a href="../Homepage/index.html">Home</a>
     <a href="../entry-1/index.html">Coffee</a>
     <a href="../entry-2/index.html">Subway</a>
@@ -16,20 +18,17 @@
     <a href="../entry-5/index.html">SmallProofs</a>
     <a href="../entry-6/index.html">Reflection</a>
     <a href="../entry-7/index.html">Sky</a>
-    <a href="../entry-8/index.html">Entry8</a>
+    <a href="../entry-8/index.html">Rain</a>
     <a href="../entry-9/index.html">Me</a>
     <a href="../entry-10/index.html">Dream</a>
   </div>
 
-
-  <!-- FIRST SCREEN -->
   <section class="slide-panel" id="slidePanel">
 
     <img 
       src="https://i.pinimg.com/1200x/2a/ca/a8/2acaa80a2f3e1fdf50b8887108d46b10.jpg"
       class="slide-image"
-      id="slideImage"
-    >
+      id="slideImage">
 
     <div class="intro-text" id="introText">
       <p>
@@ -54,9 +53,6 @@
 
   </section>
 
-
-
-  <!-- SECOND SCREEN (NO REPEATED DOOR SECTION) -->
   <section class="content-panel">
 
     <div class="entry-container">
@@ -90,56 +86,60 @@
   </section>
 
 <script>
-/* ---- FIXED INTERACTION SCRIPT ---- */
+var img = document.getElementById("slideImage");
+var introText = document.getElementById("introText");
+var topNav = document.getElementById("topNav");
 
-const img = document.getElementById("slideImage");
-const introText = document.getElementById("introText");
-const topNav = document.getElementById("topNav");
+var startX = 0;
+var dragging = false;
 
-let startX = 0;
-let dragging = false;
-
-/* START DRAG */
-img.addEventListener("mousedown", e => {
+img.onmousedown = function(e) {
   dragging = true;
   startX = e.clientX;
-});
+};
 
-document.addEventListener("mouseup", () => dragging = false);
+document.onmouseup = function() {
+  dragging = false;
+};
 
-document.addEventListener("mousemove", e => {
+document.onmousemove = function(e) {
   if (!dragging) return;
-  const diff = e.clientX - startX;
 
-  if (diff < 0) img.style.transform = `translateX(${diff}px)`;
+  var diff = e.clientX - startX;
 
-  if (diff < -180) finishSlide();
-});
+  if (diff < 0) {
+    img.style.transform = "translateX(" + diff + "px)";
+  }
 
-/* TOUCH */
-img.addEventListener("touchstart", e => {
+  if (diff < -180) {
+    finishSlide();
+  }
+};
+
+img.ontouchstart = function(e) {
   startX = e.touches[0].clientX;
-});
+};
 
-img.addEventListener("touchmove", e => {
-  const diff = e.touches[0].clientX - startX;
+img.ontouchmove = function(e) {
+  var diff = e.touches[0].clientX - startX;
 
-  if (diff < 0) img.style.transform = `translateX(${diff}px)`;
+  if (diff < 0) {
+    img.style.transform = "translateX(" + diff + "px)";
+  }
 
-  if (diff < -180) finishSlide();
-});
+  if (diff < -180) {
+    finishSlide();
+  }
+};
 
-/* OPENING COMPLETE */
 function finishSlide() {
-  img.style.transition = "transform 0.6s ease-out";
+  img.style.transition = "0.6s ease-out";
   img.style.transform = "translateX(-120%)";
 
   introText.style.opacity = 1;
 
-  setTimeout(() => {
-    topNav.style.opacity = 1;
-    topNav.style.pointerEvents = "auto";
-  }, 600);
+  topNav.style.opacity = 1;
+  topNav.style.pointerEvents = "auto";
 
   dragging = false;
 }

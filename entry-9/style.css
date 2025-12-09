@@ -1,42 +1,41 @@
-/* REMOVE BLACK BACKGROUND */
 body, html {
   margin: 0;
   padding: 0;
   font-family: "Times New Roman", serif;
   overflow-x: hidden;
   color: #ffd800;
-  background: transparent !important;   /* remove black layer */
+  background: transparent;
 }
 
-/* TOP NAV — RESTORED TO ORIGINAL STYLE */
+
 .top-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(29, 18, 13, 0.8);  /* original */
+  background-color: rgba(29, 18, 13, 0.8);
   display: flex;
   justify-content: center;
   gap: 24px;
   padding: 10px 0;
   z-index: 10;
-  border-bottom: 1px solid #3b2a1e;        /* original */
+  border-bottom: 1px solid #3b2a1e;
+  font-family: Helvetica, sans-serif;
 }
 
 .top-nav a {
-  color: #f5efe6;                          /* original */
+  color: #f5efe6;
   text-decoration: none;
   font-size: 0.95em;
   transition: 0.3s ease;
-  font-style: italic;                      /* only change: make it italic */
 }
 
 .top-nav a:hover {
-  color: #1a4da1;                          /* original hover */
+  color: #1a4da1;
   transform: scale(1.05);
 }
 
-/* FIXED FULLSCREEN VIDEO AS TRUE BACKGROUND */
+
 .bg-video {
   position: fixed;
   top: 50%;
@@ -45,27 +44,23 @@ body, html {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: -999;            /* stay behind EVERYTHING */
-  filter: brightness(65%);  /* make text readable */
+  z-index: -1;
+  filter: brightness(65%);
 }
 
-/* SCROLLING TEXT LAYER */
 .scroll-content {
-  padding-top: 140px;
+  padding-top: 150px;
   padding-bottom: 200px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  z-index: 5;
-  position: relative;
 }
 
 .main-text {
   font-size: 1.6em;
   line-height: 1.65;
-  margin-bottom: 110px;
+  margin-bottom: 120px;
   font-style: italic;
   color: #ffd800;
-  background: transparent;
 }

@@ -1,12 +1,9 @@
 body {
   margin: 0;
-  font-family: "Helvetica", sans-serif;
+  font-family: Helvetica, sans-serif;
   background-color: #2b1b13;
   color: #f5efe6;
 }
-
-
-
 
 .page-layout {
   display: grid;
@@ -17,7 +14,6 @@ body {
     "top-nav top-nav"
     "sidebar main-content";
 }
-
 
 .top-nav {
   grid-area: top-nav;
@@ -34,14 +30,12 @@ body {
   text-decoration: none;
   color: #f5efe6;
   font-size: 0.95em;
-  transition: 0.3s ease;
 }
 
 .top-nav a:hover {
   color: #1a4da1;
   transform: scale(1.05);
 }
-
 
 .sidebar {
   grid-area: sidebar;
@@ -63,14 +57,12 @@ body {
   text-decoration: none;
   color: #cfc6b9;
   font-size: 0.9em;
-  transition: 0.3s ease;
 }
 
 .sidebar a:hover {
   color: #f5efe6;
   text-decoration: underline;
 }
-
 
 .main-content {
   grid-area: main-content;
@@ -81,13 +73,11 @@ body {
 .entry-container {
   max-width: 850px;
   margin: 0 auto;
-  text-align: left;
 }
 
 h1 {
   font-size: 2.3em;
   color: #1a4da1;
-  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -97,7 +87,6 @@ h1 {
   color: #f2e8dc;
   margin-bottom: 40px;
 }
-
 
 .image-section {
   display: flex;
@@ -113,12 +102,7 @@ h1 {
 .image-section img {
   width: 50%;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease;
-}
-
-.image-section img:hover {
-  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .image-section p {
@@ -127,8 +111,7 @@ h1 {
   line-height: 1.8;
 }
 
-
-a.button {
+.button {
   display: inline-block;
   background-color: #f2e8dc;
   color: #2b1b13;
@@ -136,27 +119,12 @@ a.button {
   text-decoration: none;
   border-radius: 8px;
   border: 1px solid #2b1b13;
-  transition: 0.3s ease;
   margin-top: 20px;
-  text-align: center;
+  transition: 0.3s ease;
 }
 
-a.button:hover {
+.button:hover {
   background-color: #2b1b13;
   color: #f2e8dc;
   transform: scale(1.05);
-}
-
-
-.main-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.main-content::-webkit-scrollbar-thumb {
-  background-color: #4a3327;
-  border-radius: 6px;
-}
-
-.main-content::-webkit-scrollbar-thumb:hover {
-  background-color: #6a4a3a;
 }

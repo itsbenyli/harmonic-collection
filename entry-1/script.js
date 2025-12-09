@@ -1,12 +1,12 @@
-const topNav = document.getElementById("topNav");
+var topNav = document.getElementById("topNav");
 
-document.addEventListener("scroll", () => {
-  const scrollX = window.scrollX;
-  const viewportWidth = window.innerWidth;
+window.onscroll = function () {
+  var x = window.scrollX;
+  var vw = window.innerWidth;
 
-  if (scrollX > viewportWidth * 0.5) {
-    topNav.classList.add("visible");
+  if (x > vw * 0.5) {
+    topNav.className = "top-nav visible";
   } else {
-    topNav.classList.remove("visible");
+    topNav.className = "top-nav";
   }
-});
+};

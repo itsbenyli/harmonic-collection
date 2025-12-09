@@ -22,7 +22,6 @@
   transform: scale(1.05);
 }
 
-
 body, html {
   margin: 0;
   padding: 0;
@@ -48,6 +47,7 @@ body, html {
   z-index: 1;
 }
 
+
 .lights {
   position: fixed;
   top: 0; left: 0;
@@ -61,12 +61,12 @@ body, html {
   border-radius: 50%;
   animation: blink 1.2s infinite alternate;
 }
-
 @keyframes blink {
   0% { opacity: 0.2; transform: scale(0.5); }
   50% { opacity: 1; transform: scale(1.2); }
   100% { opacity: 0.3; transform: scale(0.8); }
 }
+
 
 .clouds {
   position: fixed;
@@ -75,28 +75,33 @@ body, html {
   height: 100%;
   z-index: 3;
   overflow: hidden;
+  pointer-events: none;
 }
+
 .cloud {
   position: absolute;
   background: rgba(255,255,255,0.25);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   width: 150%;
   height: 50%;
-  transform: translateX(0);
-  transition: transform 1s ease-out;
+  transition: transform 1.3s ease-out;
 }
+
 .cloud-left.top { top: 0; left: -50%; }
 .cloud-left.bottom { top: 50%; left: -50%; }
+
 .cloud-right.top { top: 0; right: -50%; }
 .cloud-right.bottom { top: 50%; right: -50%; }
 
-body:active .cloud-left.top,
-body:active .cloud-left.bottom {
-  transform: translateX(-100%);
+/* CLICK → CLOUDS OPEN */
+.clouds.open .cloud-left.top,
+.clouds.open .cloud-left.bottom {
+  transform: translateX(-110%);
 }
-body:active .cloud-right.top,
-body:active .cloud-right.bottom {
-  transform: translateX(100%);
+
+.clouds.open .cloud-right.top,
+.clouds.open .cloud-right.bottom {
+  transform: translateX(110%);
 }
 
 .text-section {

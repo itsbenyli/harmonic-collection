@@ -8,7 +8,7 @@
 </head>
 <body>
 
-   <div class="top-nav">
+  <div class="top-nav">
     <a href="../Homepage/index.html">Home</a>
     <a href="../entry-1/index.html">Coffee</a>
     <a href="../entry-2/index.html">Subway</a>
@@ -17,14 +17,16 @@
     <a href="../entry-5/index.html">SmallProofs</a>
     <a href="../entry-6/index.html">Reflection</a>
     <a href="../entry-7/index.html">Sky</a>
-    <a href="../entry-8/index.html">Entry8</a>
+    <a href="../entry-8/index.html">Rain</a>
     <a href="../entry-9/index.html">Me</a>
     <a href="../entry-10/index.html">Dream</a>
-    </div>
+  </div>
 
   <div class="scene">
 
-    <img src="https://i.pinimg.com/1200x/b3/2f/70/b32f70b3b00e4fbaf017cb93ae5a88dd.jpg" class="city-image" alt="City Skyline">
+    <img src="https://i.pinimg.com/1200x/b3/2f/70/b32f70b3b00e4fbaf017cb93ae5a88dd.jpg"
+         class="city-image"
+         alt="City Skyline">
 
     <div class="lights">
       <div class="light" style="top:20%; left:10%; width:6px; height:6px;"></div>
@@ -35,7 +37,7 @@
       <div class="light" style="top:50%; left:70%; width:9px; height:9px;"></div>
     </div>
 
-    <div class="clouds">
+    <div class="clouds" id="clouds">
       <div class="cloud cloud-left top"></div>
       <div class="cloud cloud-left bottom"></div>
       <div class="cloud cloud-right top"></div>
@@ -45,13 +47,27 @@
     <div class="text-section">
       <p>
         I imagine myself floating above the city, watching lights flicker like tiny stars.  
-        Car streams pulse, neon whispers hum through the streets, and clouds drift apart to reveal my thoughts.  
-        The city breathes, and I am suspended in a moment between dream and reality,  
-        where every light carries a story, and every shadow invites reflection.
+        Car streams pulse, neon whispers hum through the streets,  
+        and clouds drift apart to reveal my thoughts.  
+        The city breathes, and I am suspended in a moment  
+        between dream and reality —  
+        where every light carries a story,  
+        and every shadow invites reflection.
       </p>
     </div>
 
   </div>
+
+  <script>
+    const clouds = document.getElementById("clouds");
+    let opened = false;
+
+    document.body.addEventListener("click", () => {
+      if (opened) return;
+      opened = true;
+      clouds.classList.add("open");
+    });
+  </script>
 
 </body>
 </html>
